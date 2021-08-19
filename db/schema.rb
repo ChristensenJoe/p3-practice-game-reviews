@@ -10,15 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_18_153815) do
+ActiveRecord::Schema.define(version: 2021_08_19_165832) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "game_id"
+    t.index ["game_id"], name: "index_favorites_on_game_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "game_categories", force: :cascade do |t|
+    t.integer "game_id"
+    t.integer "category_id"
+    t.index ["category_id"], name: "index_game_categories_on_category_id"
+    t.index ["game_id"], name: "index_game_categories_on_game_id"
+  end
+
   create_table "games", force: :cascade do |t|
     t.string "name"
     t.string "platform"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "content"
+    t.integer "rating"
+    t.integer "user_id"
+    t.integer "game_id"
+    t.index ["game_id"], name: "index_reviews_on_game_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

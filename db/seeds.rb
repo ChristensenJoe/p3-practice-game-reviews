@@ -21,4 +21,22 @@ end
 
 # TODO: Create seeds for the models/migrations you have added
 
+puts "Creating favorites..."
+Favorite.create(user_id: 1, game_id: 1)
+Favorite.create(user_id: 1, game_id: 2)
+Favorite.create(user_id: 1, game_id: 3)
+
+puts "Creating reviews..."
+Review.create(content: "Review1", rating: 4, user_id: 1, game_id: 1)
+Review.create(content: "Review2", rating: 2, user_id: 1, game_id: 2)
+Review.create(content: "Review3", rating: 5, user_id: 1, game_id: 3)
+
+puts "Creating categories..."
+Game_category.create(game_id: 1, category_id: 1)
+Game_category.create(game_id: 2, category_id: 1)
+Game_category.create(game_id: 3, category_id: 1)
+Game_category.create(game_id: 1, category_id: 2)
+Game_category.create(game_id: 1, category_id: 3)
+Game_category.create(game_id: 1, category_id: 4)
+
 puts "Database seeded successfully!"
